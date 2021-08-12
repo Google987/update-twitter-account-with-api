@@ -30,5 +30,6 @@ With this script you will be able to show your youtube subscriber count on your 
 - now you can simply run `twitter-api.py` file
     - `python twitter-api.py`
 
-Watch my youtube video for better understanding: 
+Watch my youtube video for better understanding: https://youtu.be/4PExr-7kWL8
+
 Also subscribe to my youtube channel please. 
