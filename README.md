@@ -30,6 +30,13 @@ With this script you will be able to show your youtube subscriber count on your 
 - now you can simply run `twitter-api.py` file
     - `python twitter-api.py`
 
-Watch my youtube video for better understanding: https://youtu.be/4PExr-7kWL8
+### Watch my youtube video for better understanding:
+
+[![image](https://user-images.githubusercontent.com/30652896/131312839-2608398c-161a-40de-b5ef-5617c49bbdc8.png)](https://youtu.be/4PExr-7kWL8)
+
+### How to schedule the script with Cron Job:
+
+[![image](https://user-images.githubusercontent.com/30652896/131313040-b1c5279a-6294-44f1-9550-a818db264bb7.png)](https://youtu.be/mgehiL73_B0)
+
 
 Also subscribe to my youtube channel please. 
