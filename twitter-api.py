@@ -1,6 +1,6 @@
 import tweepy
 import requests
-from createBanner import createUpdatedImage
+from createBanner import createUpdatedImage, addFollowers
 import topSecret
 
 # twitter
@@ -69,5 +69,6 @@ if __name__ == '__main__':
     subCount = getActualSubCount()
     updateNameAndDescription(subCount)
     createUpdatedImage(subCount)
-    api.update_profile_banner('banner.png')
+    addFollowers(tweepy.Cursor(api.followers).items(5))
+    api.update_profile_banner('new_banner.png')
 
