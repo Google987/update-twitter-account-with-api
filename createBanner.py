@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 import urllib.request
 
 
-def createUpdatedImage(subsCount):
+def createUpdatedImage(subsCount, instaCount):
     subsCount = "{:,}".format(int(subsCount))
     image = Image.open('new_background.png')
     draw = ImageDraw.Draw(image)
@@ -15,6 +15,15 @@ def createUpdatedImage(subsCount):
     draw.text((x+1, y+1), message, fill=color, font=font)
     draw.text((x+1, y+1), message, fill=color, font=font)
     draw.text((x+3, y+3), message, fill=color, font=font)
+
+    #instagram
+    font = ImageFont.truetype("arial.ttf", size=25)
+    draw.text((100, 10), "@beyou7060", fill=color, font=font)
+    draw.text((101, 11), "@beyou7060", fill=color, font=font)
+    message = str(instaCount) + " Followers"
+    font = ImageFont.truetype("arial.ttf", size=40)
+    draw.text((100, 50), message, fill=color, font=font)
+    draw.text((101, 51), message, fill=color, font=font)
     image.save('banner.png')
 
 
@@ -36,6 +45,6 @@ def addFollowers(followers):
 
 
 if __name__ == '__main__':
-    createUpdatedImage(23418746)
-    addFollowers()
+    createUpdatedImage(23418746, 100)
+    # addFollowers()
 

@@ -56,19 +56,48 @@ def getSubCount(subCount):
         return 'Subscribe to my channel please'
 
 
-def updateNameAndDescription(subCount):
+def getFollowersCountEmoji(subCount):
+    try:
+        subCount = str(subCount)
+        digits = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣']
+        strCount = ''
+        for d in subCount:
+            strCount += digits[int(d)]
+        return strCount + " Followers"
+    except Exception as e:
+        print(e)
+        return 'Follow me on Insta please'
+
+
+def getFollowersCount():
+    try:
+        instaId = 'beyou7060'
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        response = requests.get("https://www.instagram.com/"+instaId+"/?__a=1", headers=headers)
+        print(response.status_code, response.request.headers)
+        instaResponse = response.json()
+        # print(instaResponse)
+        follwerCount = str(instaResponse['graphql']['user']['edge_followed_by']['count'])
+        return int(follwerCount)
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def updateNameAndDescription(subCount, instaCount):
     name = "A Little Coding: "+getSubCount(subCount)
-    description = """I'm a #SoftwareEngineer.\n""" + name + """
-These numbers get updated automatically. 
-Subscribe to my channel to see it change."""
+    instaStr = "beyou7060 (Insta): "+getFollowersCountEmoji(instaCount)
+    description = """I'm a #SoftwareEngineer.\n""" + name + "\n" + instaStr + "\n" + \
+"""These numbers get updated automatically"""
     print(name, description)
     api.update_profile(name=name, description=description)
 
 
 if __name__ == '__main__':
     subCount = getActualSubCount()
-    updateNameAndDescription(subCount)
-    createUpdatedImage(subCount)
+    instaCount = getFollowersCount()
+    updateNameAndDescription(subCount, instaCount)
+    createUpdatedImage(subCount, instaCount)
     addFollowers(tweepy.Cursor(api.followers).items(5))
     api.update_profile_banner('new_banner.png')
 
