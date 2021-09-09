@@ -2,6 +2,7 @@ import tweepy
 import requests
 from createBanner import createUpdatedImage, addFollowers
 import topSecret
+from instaloader import Instaloader, Profile
 
 # twitter
 consumer_key = topSecret.api_key
@@ -71,14 +72,22 @@ def getFollowersCountEmoji(subCount):
 
 def getFollowersCount():
     try:
-        instaId = 'beyou7060'
-        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-        response = requests.get("https://www.instagram.com/"+instaId+"/?__a=1", headers=headers)
-        print(response.status_code, response.request.headers)
-        instaResponse = response.json()
-        # print(instaResponse)
-        follwerCount = str(instaResponse['graphql']['user']['edge_followed_by']['count'])
-        return int(follwerCount)
+        # THIS BELOW COMMENTED CODE ALSO WORKD FINE. BUT FOR SOME REASON IT IS NOT WORKING ON THE SERVER
+        # THAT'S WHY I HAD TO USE Instaloader
+        
+        # instaId = 'beyou7060'
+        # headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        # response = requests.get("https://www.instagram.com/"+instaId+"/?__a=1", headers=headers)
+        # print(response.status_code, response.request.headers)
+        # instaResponse = response.json()
+        # # print(instaResponse)
+        # follwerCount = str(instaResponse['graphql']['user']['edge_followed_by']['count'])
+        # return int(follwerCount)
+
+        L = Instaloader()
+        user = "beyou7060"
+        profile = Profile.from_username(L.context, user)
+        return int(profile.followers)
     except Exception as e:
         print(e)
         return 0
