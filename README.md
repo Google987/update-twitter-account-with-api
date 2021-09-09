@@ -2,7 +2,7 @@
 
 With this script you will be able to show your youtube subscriber count on your twitter profile 
 # Output:
-![image](https://user-images.githubusercontent.com/30652896/129080434-f0e23257-f1f2-46f4-ac6c-18fa0999f096.png)
+<a href="https://twitter.com/beyou7060"><img height="500" src="https://user-images.githubusercontent.com/30652896/132672481-19761025-2647-4875-a67f-7d3445adb42e.png"></a>
 
 ## Steps:
 - Create twitter developer account
